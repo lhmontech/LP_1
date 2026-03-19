@@ -1,9 +1,12 @@
 package org.example;
 
+import javafx.scene.image.ImageView;
+
 public class Pessoa {
-    private String nome;
+    private String nome = "Lucas";
     private String genero;
     private int idade;
+    private ImageView imagem;
 
 
     public String getNome() {
@@ -31,14 +34,14 @@ public class Pessoa {
     }
 
     public void andar(){
-        System.out.println(" andou 5km");
+        imagem.setX(-350.0);
     }
 
-    public void falar(){
-        System.out.println(nome + " falou que sua idade é " + idade + " anos e seu genêro é " + genero);
+    public String falar(){
+        return "Olá, me chamo " + nome;
     }
 
-    public void gritar(){
-        System.out.println(nome + " gritou AAAAAAA!");
+    public String gritar(){
+        return "AAAAAAA!";
     }
 }
