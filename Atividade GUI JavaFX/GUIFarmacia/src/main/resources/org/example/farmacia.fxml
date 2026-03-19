@@ -24,12 +24,12 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="102.0" layoutY="212.0" mnemonicParsing="false" text="Prateleiras">
+      <Button layoutX="102.0" layoutY="212.0" mnemonicParsing="false" onAction="#clicarBtnPrateleira" text="Prateleiras">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button layoutX="104.0" layoutY="292.0" mnemonicParsing="false" text="Remédios">
+      <Button layoutX="104.0" layoutY="292.0" mnemonicParsing="false" onAction="#clicarBtnRemedios" text="Remédios">
          <font>
             <Font size="24.0" />
          </font>

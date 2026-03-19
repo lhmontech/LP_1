@@ -1,9 +1,9 @@
 package org.example;
 
 public class Prateleira {
-    private Double tamanho;
-    private String cor;
-    private String conteudo;
+    private Double tamanho = 2.3;
+    private String cor = "Branca";
+    private String conteudo = "Antialérgicos";
 
     public Double getTamanho() {
         return tamanho;
@@ -29,15 +29,15 @@ public class Prateleira {
         this.conteudo = conteudo;
     }
 
-    public void armazenar() {
-        System.out.println("A prateleira " + cor + " armazena " + conteudo);
+    public String armazenar() {
+        return "A prateleira " + cor + " armazena " + conteudo;
     }
 
-    public void expor() {
-        System.out.println("A prateleira " + cor + " expõe " + conteudo);
+    public String expor() {
+        return "A prateleira " + cor + " expõe " + conteudo;
     }
 
-    public void organizar() {
-        System.out.println("A prateleira com tamanho " + tamanho + " serve para organizar os produtos " + conteudo);
+    public String organizar() {
+        return "A prateleira com tamanho " + tamanho + " serve para organizar os produtos " + conteudo;
     }
 }

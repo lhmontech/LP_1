@@ -33,8 +33,8 @@ public class Pessoa {
         this.idade = idade;
     }
 
-    public void andar(){
-        imagem.setX(-350.0);
+    public String andar(){
+        return "*Andou 2 passos*";
     }
 
     public String falar(){
