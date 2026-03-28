@@ -1,7 +1,8 @@
+package org.example;
 public class Fruta {
-    private String nome;
-    private String cor;
-    private Double preco;
+    private String nome = "Maçã";
+    private String cor = "Amarela";
+    private Double preco = 2.99;
 
 
     public void setNome(String nome){
@@ -28,15 +29,15 @@ public class Fruta {
         this.preco = preco;
     }
 
-    public void vender(){
-        System.out.println("A fruta" + nome + "foi vendida por " + preco);
+    public String vender(){
+        return "A fruta " + nome + " foi vendida por " + preco;
     }
 
-    public void estragar(){
-        System.out.println(nome + " estragou ");
+    public String estragar(){
+        return "A " + nome + " estragou ";
     }
 
-    public void comer(){
-        System.out.println("João comeu a fruta de cor " + cor);
+    public String comer(){
+        return "Alguém comeu a fruta de cor " + cor;
     }
 }

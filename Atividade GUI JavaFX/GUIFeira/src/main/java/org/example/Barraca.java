@@ -1,7 +1,8 @@
+package org.example;
 public class Barraca {
-    private String nomeDono;
-    private String conteudo;
-    private Double tamanho;
+    private String nomeDono = "Márcio";
+    private String conteudo = "Bananas";
+    private Double tamanho = 2.5;
 
 
     public String getNome(String nomeDono){
@@ -28,15 +29,15 @@ public class Barraca {
         this.tamanho = tamanho;
     }
 
-    public void armazenar(){
-        System.out.println("A barraca da " + nomeDono + "armazena frutas");
+    public String armazenar(){
+        return "A barraca da " + nomeDono + "armazena frutas";
     }
 
-    public void expor(){
-        System.out.println("A barraca da " + nomeDono + " expõe " + conteudo);
+    public String expor(){
+        return "A barraca da " + nomeDono + " expõe " + conteudo;
     }
 
-    public void organizar(){
-        System.out.println("A barraca com tamanho " + tamanho + " organiza as frutas");
+    public String organizar(){
+        return "A barraca com tamanho " + tamanho + "m organiza as frutas" + conteudo;
     }
 }

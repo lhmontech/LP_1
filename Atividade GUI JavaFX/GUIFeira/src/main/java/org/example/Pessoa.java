@@ -1,7 +1,9 @@
+package org.example;
+
 public class Pessoa {
-    private String nome;
-    private String corRoupa;
-    private String funcao;
+    private String nome = "Cláudia";
+    private String corRoupa = "Azul";
+    private String funcao = "Feirante";
 
 
     public void setNome(String nome){
@@ -28,15 +30,15 @@ public class Pessoa {
         this.funcao = funcao;
     }
 
-    public void vender(){
-        System.out.println("A " + funcao + " vendeu suas frutas");
+    public String vender(){
+        return "A " + funcao + " vendeu suas frutas";
     }
 
-    public void falar(){
-        System.out.println(nome + " falou com a feirante de roupa " + corRoupa);
+    public String falar(){
+        return nome + " falou com a feirante de roupa " + corRoupa;
     }
 
-    public void comprar(){
-        System.out.println(nome + " comprou um abacaxi");
+    public String comprar(){
+        return nome + " comprou um abacaxi";
     }
 }
