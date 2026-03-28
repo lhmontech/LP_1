@@ -1,9 +1,9 @@
 package org.example;
 
 public class Remedio {
-    private String nome;
-    private String tipo;
-    private Double preco;
+    private String nome = "Loratadina";
+    private String tipo = "Antialérgico";
+    private Double preco = 9.50;
 
     public String getNome() {
         return nome;
@@ -29,16 +29,16 @@ public class Remedio {
         this.preco = preco;
     }
 
-    public void tomar() {
-        System.out.println("Tomou o " + nome);
+    public String tomar() {
+        return "Alguém tomou um " + nome;
     }
 
-    public void comprar() {
-        System.out.println("comprou o " + nome + " por " + preco);
+    public String comprar() {
+        return "Alguém comprou o " + nome + " por R$ " + preco;
     }
 
-    public void curar() {
-        System.out.println("O " + nome + " serve para curar sintomas do tipo " + tipo);
+    public String curar() {
+        return "O " + nome + " serve para curar sintomas do tipo " + tipo;
     }
 
 }

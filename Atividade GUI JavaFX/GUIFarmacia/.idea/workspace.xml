@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8c99de67-8f3f-43e9-8a8e-c0938c4560df" name="Changes" comment="Aba pessoa criada">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/remedio.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Pessoa.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Prateleira.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Prateleira.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Remedio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Remedio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/farmaciaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/farmaciaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/farmacia.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/farmacia.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/pessoa.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/pessoa.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/prateleira.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/prateleira.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -54,6 +55,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Lucas/Projects/LP_1/Atividade GUI JavaFX/GUIFarmacia/src/main/resources/org/example/imagens",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -86,6 +88,8 @@
       <workItem from="1773942073312" duration="4695000" />
       <workItem from="1773949779519" duration="2442000" />
       <workItem from="1773953341806" duration="1903000" />
+      <workItem from="1774570499802" duration="14000" />
+      <workItem from="1774705873254" duration="1347000" />
     </task>
     <task id="LOCAL-00001" summary="Aba pessoa criada">
       <option name="closed" value="true" />

@@ -5,6 +5,15 @@ import javafx.scene.control.Label;
 
 public class farmaciaController {
     @FXML
+    private void clicarBtnVoltar() {
+        try {
+            App.setRoot("farmacia");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void clicarBtnPessoa() {
         try {
             App.setRoot("pessoa");
@@ -25,7 +34,7 @@ public class farmaciaController {
     @FXML
     private void clicarBtnRemedios() {
         try {
-            App.setRoot("prateleira");
+            App.setRoot("remedio");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,6 +45,9 @@ public class farmaciaController {
 
     @FXML
     private Prateleira prateleira = new Prateleira();
+
+    @FXML
+    private Remedio remedio = new Remedio();
 
     @FXML
     private Label texto;
@@ -68,5 +80,20 @@ public class farmaciaController {
     @FXML
     private void clicarBtnOrganizar() {
         texto.setText(prateleira.organizar());
+    }
+
+    @FXML
+    private void clicarBtnTomar() {
+        texto.setText(remedio.tomar());
+    }
+
+    @FXML
+    private void clicarBtnComprar() {
+        texto.setText(remedio.comprar());
+    }
+
+    @FXML
+    private void clicarBtnCurar() {
+        texto.setText(remedio.curar());
     }
 }
