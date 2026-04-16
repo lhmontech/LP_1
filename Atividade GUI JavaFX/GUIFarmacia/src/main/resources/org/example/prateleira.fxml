@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="581.0" prefWidth="1029.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.farmaciaController">
+   <children>
+      <ImageView fitHeight="372.0" fitWidth="582.0" layoutX="302.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/9358186-medicamento-prateleira-farmacia-vitrine-ilustracao-fundo-com-formacologia-produtos-vetor.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="146.0" layoutY="160.0" mnemonicParsing="false" onAction="#clicarBtnArmazenar" prefHeight="45.0" prefWidth="134.0" text="Armazenar">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button layoutX="164.0" layoutY="222.0" mnemonicParsing="false" onAction="#clicarBtnExpor" prefHeight="41.0" prefWidth="98.0" text="Expor">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Button layoutX="145.0" layoutY="288.0" mnemonicParsing="false" onAction="#clicarBtnOrganizar" prefHeight="45.0" prefWidth="134.0" text="Organizar">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Button>
+      <Label fx:id="texto" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="76.0" prefHeight="36.0" prefWidth="551.0" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button layoutX="186.0" layoutY="362.0" mnemonicParsing="false" onAction="#clicarBtnVoltar" text="Voltar" />
+   </children>
+</AnchorPane>
