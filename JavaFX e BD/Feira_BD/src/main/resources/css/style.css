@@ -1,0 +1,12 @@
+.btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-family: monoscape;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+    -fx-border-radius: 20px;
+    -fx-border-color: #FFFFFFA0;
+    -fx-cursor: hand;
+}
