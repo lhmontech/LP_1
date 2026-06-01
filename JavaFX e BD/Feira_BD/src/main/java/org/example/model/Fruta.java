@@ -6,13 +6,12 @@ public class Fruta {
     private Long id;
     private String tipo;
     private double valor;
-    private LocalDate validade;
+    private int quantidade;
 
-    public Fruta(Long id, String tipo, double valor, LocalDate validade) {
-        this.id = id;
+    public Fruta(String tipo, double valor, int quantidade) {
         this.tipo = tipo;
         this.valor = valor;
-        this.validade = validade;
+        this.quantidade = quantidade;
     }
 
     public Long getId() {
@@ -39,12 +38,12 @@ public class Fruta {
         this.valor = valor;
     }
 
-    public LocalDate getValidade() {
-        return validade;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setValidade(LocalDate validade) {
-        this.validade = validade;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
     public void adicionarFruta() {

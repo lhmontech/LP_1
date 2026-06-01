@@ -4,14 +4,14 @@ import java.util.List;
 
 public class Barraca {
     private Long id;
-    private String tipoProduto;
-    private List<Fruta> mostruario;
+    private Long frutaId;
+    private boolean destaque;
     private int quantidadeProduto;
 
-    public Barraca(Long id, String tipoProduto, List<Fruta> mostruario, int quantidadeProduto) {
+    public Barraca(Long id, Long frutaId, boolean destaque, int quantidadeProduto) {
         this.id = id;
-        this.tipoProduto = tipoProduto;
-        this.mostruario = mostruario;
+        this.frutaId = frutaId;
+        this.destaque = destaque;
         this.quantidadeProduto = quantidadeProduto;
     }
 
@@ -23,20 +23,20 @@ public class Barraca {
         this.id = id;
     }
 
-    public String getTipoProduto() {
-        return tipoProduto;
+    public Long getFrutaId() {
+        return frutaId;
     }
 
-    public void setTipoProduto(String tipoProduto) {
-        this.tipoProduto = tipoProduto;
+    public void setFrutaId(Long frutaId) {
+        this.frutaId = frutaId;
     }
 
-    public List<Fruta> getMostruario() {
-        return mostruario;
+    public boolean isDestaque() {
+        return destaque;
     }
 
-    public void setMostruario(List<Fruta> mostruario) {
-        this.mostruario = mostruario;
+    public void setDestaque(boolean destaque) {
+        this.destaque = destaque;
     }
 
     public int getQuantidadeProduto() {
