@@ -1,5 +1,7 @@
 package org.example.model;
 
+import org.example.DAO.FrutaDAO;
+
 import java.time.LocalDate;
 
 public class Fruta {
@@ -8,7 +10,8 @@ public class Fruta {
     private double valor;
     private int quantidade;
 
-    public Fruta(String tipo, double valor, int quantidade) {
+    public Fruta(Long id, String tipo, double valor, int quantidade) {
+        this.id = id;
         this.tipo = tipo;
         this.valor = valor;
         this.quantidade = quantidade;
@@ -45,17 +48,4 @@ public class Fruta {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-
-    public void adicionarFruta() {
-
-    }
-
-    public void descartarFruta() {
-
-    }
-
-    public void aplicarPromocao() {
-
-    }
-
 }

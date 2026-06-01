@@ -5,6 +5,7 @@ import org.example.model.Fruta;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class FrutaDAO {
@@ -31,6 +32,30 @@ public class FrutaDAO {
             stmt.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao alterar valor da fruta no banco: " + e);
+        }
+    }
+
+    public Fruta buscarPorTipo(String nomeFruta){
+        String sql = "SELECT * FROM fruta WHERE tipo = ?";
+
+        try (Connection conn = ConexaoBD.conectar();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nomeFruta);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                Fruta f = new Fruta(
+                        rs.getLong("id"),
+                        rs.getString("tipo"),
+                        rs.getDouble("preco"),
+                        rs.getInt("quantidade")
+                );
+                return f;
+            }
+            return null;
+        } catch (SQLException e) {
+            System.out.println("Erro ao alterar valor da fruta no banco: " + e);
+            return null;
         }
     }
 

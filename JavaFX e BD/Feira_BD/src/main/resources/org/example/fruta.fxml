@@ -41,7 +41,7 @@
                         <Image url="@../../images/banana.png" />
                      </image>
                   </ImageView>
-                  <RadioButton mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
+                  <RadioButton fx:id="rsBanana" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER">
@@ -67,7 +67,7 @@
                         <Insets bottom="20.0" top="20.0" />
                      </VBox.margin>
                   </ImageView>
-                  <RadioButton mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
+                  <RadioButton fx:id="rsMaca" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER">
@@ -90,7 +90,7 @@
                         <Image url="@../../images/laranja.png" />
                      </image>
                   </ImageView>
-                  <RadioButton mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja">
+                  <RadioButton fx:id="rsLaranja" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja">
                      <font>
                         <Font size="14.0" />
                      </font>
