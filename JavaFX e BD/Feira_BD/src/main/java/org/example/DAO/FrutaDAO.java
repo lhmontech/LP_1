@@ -44,17 +44,16 @@ public class FrutaDAO {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                Fruta f = new Fruta(
+                return new Fruta(
                         rs.getLong("id"),
                         rs.getString("tipo"),
                         rs.getDouble("preco"),
                         rs.getInt("quantidade")
                 );
-                return f;
             }
             return null;
         } catch (SQLException e) {
-            System.out.println("Erro ao alterar valor da fruta no banco: " + e);
+            e.printStackTrace();
             return null;
         }
     }

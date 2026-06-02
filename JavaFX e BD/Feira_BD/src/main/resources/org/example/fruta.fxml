@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FeiraController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FrutaController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -26,14 +26,13 @@
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade atual:" />
-                        <Label fx:id="lblQtd" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
+                        <Label fx:id="lblQtdB" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Preço atual:" />
-                        <Label styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$" />
-                        <Label fx:id="lblPreco" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0,00" />
+                        <Label fx:id="lblPrecoB" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
                      </children>
                   </HBox>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
@@ -49,14 +48,13 @@
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade atual:" />
-                        <Label fx:id="lblQtd" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
+                        <Label fx:id="lblQtdM" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Preço atual:" />
-                        <Label styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$" />
-                        <Label fx:id="lblPreco" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0,00" />
+                        <Label fx:id="lblPrecoM" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
                      </children>
                   </HBox>
                   <ImageView fitHeight="110.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
@@ -75,14 +73,13 @@
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade atual:" />
-                        <Label fx:id="lblQtd" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
+                        <Label fx:id="lblQtdL" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Preço atual:" />
-                        <Label styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$" />
-                        <Label fx:id="lblPreco" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0,00" />
+                        <Label fx:id="lblPrecoL" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
                      </children>
                   </HBox>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">

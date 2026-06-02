@@ -6,21 +6,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import org.example.App;
+import org.example.model.Fruta;
 import org.example.service.FrutaService;
 
 import java.io.IOException;
 
 public class FeiraController {
-    @FXML private TextField fldDesconto;
-    @FXML private TextField fldPreco;
-    @FXML private TextField fldQtd;
-    @FXML private Label lblPreco;
-    @FXML private Label lblQtd;
-    @FXML private RadioButton rsBanana;
-    @FXML private RadioButton rsMaca;
-    @FXML private RadioButton rsLaranja;
-
-    private final FrutaService frutaService = new FrutaService();
 
     @FXML
     public void clicarBarraca(){
@@ -48,41 +39,4 @@ public class FeiraController {
             System.out.println("Erro ao mudar para a tela de frutas: " + e);
         }
     }
-
-    @FXML
-    public void clicarVoltar(){
-        try {
-            App.setRoot("feira");
-        } catch (IOException e) {
-            System.out.println("Erro ao mudar para a tela de frutas: " + e);
-        }
-    }
-
-    @FXML
-    void clicarAdicionar() {
-
-        frutaService.adicionarFruta();
-    }
-
-    @FXML
-    void clicarAtualizar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void clicarDesconto(ActionEvent event) {
-
-    }
-
-    @FXML
-    void clicarExcluir(ActionEvent event) {
-
-    }
-
-    public String pegarFrutaSelecionada( {
-        if (rsBanana.isSelected()) {
-            return rsBanana.getText();
-        }
-    })
-
 }
