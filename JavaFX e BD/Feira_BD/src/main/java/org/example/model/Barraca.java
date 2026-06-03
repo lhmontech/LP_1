@@ -47,15 +47,4 @@ public class Barraca {
         this.quantidadeProduto = quantidadeProduto;
     }
 
-    public void exporProduto() {
-
-    }
-
-    public void recolherProduto() {
-
-    }
-
-    public void organizarProdutos() {
-
-    }
 }

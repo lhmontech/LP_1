@@ -1,13 +1,7 @@
 package org.example.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import org.example.App;
-import org.example.model.Fruta;
-import org.example.service.FrutaService;
 
 import java.io.IOException;
 

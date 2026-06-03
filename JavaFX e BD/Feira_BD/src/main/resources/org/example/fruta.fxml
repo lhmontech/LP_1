@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FrutaController">
+<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FrutaController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -59,7 +59,7 @@
                   </HBox>
                   <ImageView fitHeight="110.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/maca.png" />
+                        <Image url="@../../images/maçã.png" />
                      </image>
                      <VBox.margin>
                         <Insets bottom="20.0" top="20.0" />
@@ -98,10 +98,10 @@
       </HBox>
       <HBox alignment="CENTER" layoutY="529.0" spacing="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
+            <Button id="btn_acao" mnemonicParsing="false" onAction="#clicarRepor" styleClass="btn" stylesheets="@../../css/style.css" text="Repor Estoque" />
+            <Button id="btn_acao" mnemonicParsing="false" onAction="#clicarReduzir" styleClass="btn" stylesheets="@../../css/style.css" text="Reduzir Estoque" />
             <Button id="btn_acao" mnemonicParsing="false" onAction="#clicarAtualizar" styleClass="btn" stylesheets="@../../css/style.css" text="Atualizar Preço" />
             <Button id="btn_acao" mnemonicParsing="false" onAction="#clicarDesconto" styleClass="btn" stylesheets="@../../css/style.css" text="Aplicar Desconto" />
-            <Button id="btn_acao" mnemonicParsing="false" onAction="#clicarAdicionar" styleClass="btn" stylesheets="@../../css/style.css" text="Adicionar" />
-            <Button id="btn_acao" mnemonicParsing="false" onAction="#clicarExcluir" styleClass="btn" stylesheets="@../../css/style.css" text="Excluir" />
          </children>
       </HBox>
       <HBox alignment="CENTER" layoutY="428.0" spacing="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

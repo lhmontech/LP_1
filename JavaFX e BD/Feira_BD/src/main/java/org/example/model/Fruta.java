@@ -17,6 +17,12 @@ public class Fruta {
         this.quantidade = quantidade;
     }
 
+    public Fruta(Long id, String tipo, int quantidade) {
+        this.id = id;
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+    }
+
     public Long getId() {
         return id;
     }

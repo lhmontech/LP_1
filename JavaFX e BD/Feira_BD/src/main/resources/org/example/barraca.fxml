@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FeiraController">
+<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BarracaController">
    <children>
       <ImageView fitHeight="757.0" fitWidth="1079.0" layoutX="-48.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-1.2325439453125" AnchorPane.leftAnchor="-48.0" AnchorPane.rightAnchor="-131.0" AnchorPane.topAnchor="-1.0">
          <image>
@@ -27,38 +27,38 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="lbl_white" styleClass="lbl_status" text="0x" />
+                  <Label id="lbl_white" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
                   <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/banana.png" />
                      </image>
                   </ImageView>
-                  <RadioButton id="lbl_white" mnemonicParsing="false" styleClass="radio_btn" text="Banana" />
+                  <RadioButton id="lbl_white" fx:id="rbBanana" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="lbl_white" styleClass="lbl_status" text="0x" />
+                  <Label id="lbl_white" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
                   <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/laranja.png" />
                      </image>
                   </ImageView>
-                  <RadioButton id="lbl_white" mnemonicParsing="false" styleClass="radio_btn" text="Laranja" />
+                  <RadioButton id="lbl_white" fx:id="rbLaranja" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="lbl_white" styleClass="lbl_status" text="0x" />
+                  <Label id="lbl_white" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
                   <ImageView fitHeight="150.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/maca.png" />
+                        <Image url="@../../images/maçã.png" />
                      </image>
                      <HBox.margin>
                         <Insets left="10.0" right="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <RadioButton id="lbl_white" mnemonicParsing="false" styleClass="radio_btn" text="Maçã" />
+                  <RadioButton id="lbl_white" fx:id="rbMaca" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
                </children>
             </HBox>
          </children>
@@ -66,12 +66,12 @@
       <Button id="btn_inicial" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#clicarVoltar" styleClass="btn" stylesheets="@../../css/style.css" text="↩️ Voltar" />
       <VBox layoutX="24.0" layoutY="251.0" spacing="10.0">
          <children>
-            <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarVoltar" styleClass="btn" stylesheets="@../../css/style.css" text="Expor" />
-            <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarVoltar" styleClass="btn" stylesheets="@../../css/style.css" text="Recolher" />
-            <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarVoltar" styleClass="btn" stylesheets="@../../css/style.css" text="Organizar" />
+            <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarExpor" styleClass="btn" stylesheets="@../../css/style.css" text="Expor" />
+            <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarRecolher" styleClass="btn" stylesheets="@../../css/style.css" text="Recolher" />
+            <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarOrganizar" styleClass="btn" stylesheets="@../../css/style.css" text="Organizar" />
          </children>
       </VBox>
-      <TextField layoutX="121.0" layoutY="219.0" maxWidth="100.0" styleClass="txt_field" />
-      <Label id="lbl_white" layoutX="21.0" layoutY="222.0" styleClass="lbl_status" text="Quantidade:" />
+      <TextField fx:id="fldQtd" layoutX="121.0" layoutY="219.0" maxWidth="100.0" styleClass="txt_field" stylesheets="@../../css/style.css" />
+      <Label id="lbl_white" layoutX="21.0" layoutY="222.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade:" />
    </children>
 </AnchorPane>

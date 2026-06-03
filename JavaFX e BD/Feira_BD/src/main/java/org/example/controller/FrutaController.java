@@ -4,9 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 import org.example.App;
 import org.example.model.Fruta;
-import org.example.service.FrutaService;
+import org.example.service.FeiraService;
 
 import java.io.IOException;
 
@@ -24,10 +25,16 @@ public class FrutaController {
     @FXML private RadioButton rsMaca;
     @FXML private RadioButton rsLaranja;
 
-    private final FrutaService frutaService = new FrutaService();
+    private final FeiraService feiraService = new FeiraService();
+    private ToggleGroup grupoFrutas;
 
     @FXML
     public void initialize(){
+        grupoFrutas = new ToggleGroup();
+
+        rsBanana.setToggleGroup(grupoFrutas);
+        rsMaca.setToggleGroup(grupoFrutas);
+        rsLaranja.setToggleGroup(grupoFrutas);
         atualizarInidicadores();
     }
 
@@ -36,55 +43,67 @@ public class FrutaController {
         try {
             App.setRoot("feira");
         } catch (IOException e) {
-            System.out.println("Erro ao mudar para a tela de frutas: " + e);
+            System.out.println("Erro ao mudar para a tela da feira: " + e);
         }
     }
 
     @FXML
-    public void clicarAdicionar() {
+    public void clicarRepor() {
         String tipoFruta = pegarFrutaSelecionada();
-        int quantidade = pegarQtd();
-        frutaService.adicionarFruta(tipoFruta, quantidade);
-        limparFormulario();
-        atualizarInidicadores();
+        if (tipoFruta != null) {
+            int quantidade = pegarQtd();
+            feiraService.adicionarFruta(tipoFruta, quantidade);
+            limparFormulario();
+            atualizarInidicadores();
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
     }
 
     @FXML
     void clicarAtualizar() {
         String tipoFruta = pegarFrutaSelecionada();
-        double novoValor = pegarNovoValor();
-        frutaService.atualizarPreco(tipoFruta, novoValor);
-        limparFormulario();
-        atualizarInidicadores();
+        if (tipoFruta != null) {
+            double novoValor = pegarNovoValor();
+            feiraService.atualizarPreco(tipoFruta, novoValor);
+            limparFormulario();
+            atualizarInidicadores();
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
     }
 
     @FXML
     void clicarDesconto() {
         String tipoFruta = pegarFrutaSelecionada();
-        int desconto = pegarDesconto();
-        frutaService.aplicarPromocao(tipoFruta, desconto);
-        limparFormulario();
-        atualizarInidicadores();
+        if (tipoFruta != null) {
+            int desconto = pegarDesconto();
+            feiraService.aplicarPromocao(tipoFruta, desconto);
+            limparFormulario();
+            atualizarInidicadores();
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
     }
 
     @FXML
-    void clicarExcluir() {
+    void clicarReduzir() {
         String tipoFruta = pegarFrutaSelecionada();
-        int quantidade = pegarQtd();
-        frutaService.descartarFruta(tipoFruta, quantidade);
-        limparFormulario();
-        atualizarInidicadores();
+        if (tipoFruta != null) {
+            int quantidade = pegarQtd();
+            feiraService.descartarFruta(tipoFruta, quantidade);
+            limparFormulario();
+            atualizarInidicadores();
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
     }
 
     public String pegarFrutaSelecionada() {
-        if (rsBanana.isSelected()) {
-            return rsBanana.getText();
-        }
-        if (rsLaranja.isSelected()) {
-            return rsLaranja.getText();
-        }
-        if (rsMaca.isSelected()) {
-            return rsMaca.getText();
+        RadioButton selecionado = (RadioButton) grupoFrutas.getSelectedToggle();
+        if (selecionado != null) {
+            String fruta = selecionado.getText();
+            return fruta;
         }
         return null;
     }
@@ -116,7 +135,7 @@ public class FrutaController {
             texto = texto.replace(",", ".");
             return Double.parseDouble(texto);
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Digite um valor válido");
+            throw new RuntimeException("Digite um valor válido!");
         }
     }
 
@@ -130,18 +149,17 @@ public class FrutaController {
     }
 
     private void atualizarInidicadores() {
-        Fruta banana = frutaService.buscarPorTipo("Banana");
-        Fruta maca = frutaService.buscarPorTipo("Maçã");
-        Fruta laranja = frutaService.buscarPorTipo("Laranja");
+        Fruta banana = feiraService.buscarPorTipo("Banana");
+        Fruta maca = feiraService.buscarPorTipo("Maçã");
+        Fruta laranja = feiraService.buscarPorTipo("Laranja");
 
-
-        lblPrecoB.setText(String.valueOf(banana.getValor()));
+        lblPrecoB.setText("R$ " + String.valueOf(banana.getValor()));
         lblQtdB.setText(String.valueOf(banana.getQuantidade()));
 
-        lblPrecoM.setText(String.valueOf(maca.getValor()));
+        lblPrecoM.setText("R$ " + String.valueOf(maca.getValor()));
         lblQtdM.setText(String.valueOf(maca.getQuantidade()));
 
-        lblPrecoL.setText(String.valueOf(laranja.getValor()));
+        lblPrecoL.setText("R$ " + String.valueOf(laranja.getValor()));
         lblQtdL.setText(String.valueOf(laranja.getQuantidade()));
     }
 }
