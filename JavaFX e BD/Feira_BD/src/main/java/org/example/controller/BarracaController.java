@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -9,7 +10,6 @@ import org.example.App;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import org.example.DAO.BarracaDAO;
 import org.example.service.FeiraService;
 
 import java.io.IOException;
@@ -22,6 +22,17 @@ public class BarracaController {
     @FXML private RadioButton rbLaranja;
     @FXML private RadioButton rbMaca;
     @FXML private AnchorPane anchorPane;
+    @FXML private TextField fldQtdCli;
+    @FXML private Label qtdBanana;
+    @FXML private Label qtdBananaCli;
+    @FXML private Label qtdLaranja;
+    @FXML private Label qtdLaranjaCli;
+    @FXML private Label qtdMaca;
+    @FXML private Label qtdMacaCli;
+    @FXML private RadioButton rbBananaCli;
+    @FXML private RadioButton rbLaranjaCli;
+    @FXML private RadioButton rbMacaCli;
+
 
     private ToggleGroup grupoFrutas;
     private FeiraService feiraService = new FeiraService();
@@ -185,4 +196,6 @@ public class BarracaController {
             anchorPane.getChildren().add(iv);
         }
     }
+
+
 }

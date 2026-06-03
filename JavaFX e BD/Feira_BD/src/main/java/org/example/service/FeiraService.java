@@ -23,17 +23,19 @@ public class FeiraService {
     }
 
 
-    public void descartarFruta(String tipo, int quantidade) {
+    public boolean descartarFruta(String tipo, int quantidade) {
         Fruta fruta = frutaDAO.buscarPorTipo(tipo);
         if (fruta == null) {
             System.out.println("Fruta não encontrada!");
-            return;
+            return false;
         }
         if (quantidade > fruta.getQuantidade()) {
             System.out.println("Não há " + tipo + "s o suficiente no estoque!");
+            return false;
         } else {
             int qtdTotal = fruta.getQuantidade() - quantidade;
             frutaDAO.alterarQtdFruta(fruta.getId(), qtdTotal);
+            return true;
         }
     }
 
@@ -73,7 +75,8 @@ public class FeiraService {
     public void exporProduto(String tipo, int quantidade) {
         Long frutaId = frutaDAO.buscarPorTipo(tipo).getId();
         Fruta fruta = barracaDAO.verificarFruta(frutaId);
-        descartarFruta(tipo, quantidade);
+        boolean descartado = descartarFruta(tipo, quantidade);
+        if (!descartado) return;
         if (fruta == null) {
             barracaDAO.exporNovaFruta(frutaId, quantidade);
         } else {
@@ -92,10 +95,6 @@ public class FeiraService {
         int qtdTotal = fruta.getQuantidade() - quantidade;
         barracaDAO.alterarQtdFruta(frutaId, qtdTotal);
         adicionarFruta(tipo, quantidade);
-    }
-
-    public void organizarProdutos() {
-        //Por padrão fica organizado visualmente por ordem de inserção, aqui organiza na ordem do banco
     }
 
     public List<String> montarListaBarraca() {

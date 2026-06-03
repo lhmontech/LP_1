@@ -19,7 +19,7 @@ public class FeiraController {
     @FXML
     public void clicarCliente(){
         try {
-            App.setRoot("cliente");
+            App.setRoot("barraca");
         } catch (IOException e) {
             System.out.println("Erro ao mudar para a tela cliente: " + e);
         }
