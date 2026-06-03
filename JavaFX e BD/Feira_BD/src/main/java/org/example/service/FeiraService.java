@@ -107,4 +107,10 @@ public class FeiraService {
         return lista;
     }
 
+    public Fruta buscarPorTipoBarraca(String tipo) {
+        Fruta fruta = frutaDAO.buscarPorTipo(tipo);
+        Fruta frutaBarraca = barracaDAO.verificarFruta(fruta.getId());
+        return frutaBarraca;
+    }
+
 }

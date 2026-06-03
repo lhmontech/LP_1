@@ -10,6 +10,7 @@ import org.example.App;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
+import org.example.model.Fruta;
 import org.example.service.FeiraService;
 
 import java.io.IOException;
@@ -197,5 +198,14 @@ public class BarracaController {
         }
     }
 
+    private void atualizarInidicadores() {
+        Fruta banana = feiraService.buscarPorTipoBarraca("Banana");
+        Fruta maca = feiraService.buscarPorTipoBarraca("Maçã");
+        Fruta laranja = feiraService.buscarPorTipoBarraca("Laranja");
+
+        qtdBanana.setText(String.valueOf(banana.getQuantidade()));
+        qtdMaca.setText(String.valueOf(maca.getQuantidade()));
+        qtdLaranja.setText(String.valueOf(laranja.getQuantidade()));
+    }
 
 }
