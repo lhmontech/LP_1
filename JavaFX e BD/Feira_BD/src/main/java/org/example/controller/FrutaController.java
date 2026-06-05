@@ -5,8 +5,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.AnchorPane;
 import org.example.App;
 import org.example.model.Fruta;
+import org.example.service.AlertService;
 import org.example.service.FeiraService;
 
 import java.io.IOException;
@@ -24,6 +26,7 @@ public class FrutaController {
     @FXML private RadioButton rsBanana;
     @FXML private RadioButton rsMaca;
     @FXML private RadioButton rsLaranja;
+    @FXML private AnchorPane rootPane;
 
     private final FeiraService feiraService = new FeiraService();
     private ToggleGroup grupoFrutas;
@@ -56,7 +59,7 @@ public class FrutaController {
             limparFormulario();
             atualizarInidicadores();
         } else {
-            System.out.println("Necessário selecionar alguma fruta");
+            AlertService.mostrar(rootPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
         }
     }
 
@@ -69,7 +72,7 @@ public class FrutaController {
             limparFormulario();
             atualizarInidicadores();
         } else {
-            System.out.println("Necessário selecionar alguma fruta");
+            AlertService.mostrar(rootPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
         }
     }
 
@@ -82,7 +85,7 @@ public class FrutaController {
             limparFormulario();
             atualizarInidicadores();
         } else {
-            System.out.println("Necessário selecionar alguma fruta");
+            AlertService.mostrar(rootPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
         }
     }
 
@@ -95,7 +98,7 @@ public class FrutaController {
             limparFormulario();
             atualizarInidicadores();
         } else {
-            System.out.println("Necessário selecionar alguma fruta");
+            AlertService.mostrar(rootPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
         }
     }
 

@@ -9,12 +9,11 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 import org.example.App;
-
 import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
-import org.example.model.Fruta;
+import org.example.model.Remedio;
 import org.example.service.AlertService;
-import org.example.service.FeiraService;
+import org.example.service.FarmaciaService;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,36 +21,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BarracaController {
+public class BalcaoController {
     @FXML private TextField fldQtd;
-    @FXML private RadioButton rbBanana;
-    @FXML private RadioButton rbLaranja;
-    @FXML private RadioButton rbMaca;
+    @FXML private RadioButton rbDipirona;
+    @FXML private RadioButton rbParacetamol;
+    @FXML private RadioButton rbAmoxicilina;
     @FXML private AnchorPane anchorPane;
     @FXML private TextField fldQtdCli;
-    @FXML private Label precoBanana;
-    @FXML private Label precoMaca;
-    @FXML private Label precoLaranja;
-    @FXML private Label qtdBanana;
-    @FXML private Label qtdBananaCli;
-    @FXML private Label qtdLaranja;
-    @FXML private Label qtdLaranjaCli;
-    @FXML private Label qtdMaca;
-    @FXML private Label qtdMacaCli;
-    @FXML private RadioButton rbBananaCli;
-    @FXML private RadioButton rbLaranjaCli;
-    @FXML private RadioButton rbMacaCli;
+    @FXML private Label precoDipirona;
+    @FXML private Label precoParacetamol;
+    @FXML private Label precoAmoxicilina;
+    @FXML private Label qtdDipirona;
+    @FXML private Label qtdDiroponaCli;
+    @FXML private Label qtdParacetamol;
+    @FXML private Label qtdParacetamolCli;
+    @FXML private Label qtdAmoxicilina;
+    @FXML private Label qtdAmoxicilinaCli;
+    @FXML private RadioButton rbDiroponaCli;
+    @FXML private RadioButton rbParacetamolCli;
+    @FXML private RadioButton rbAmoxicilinaCli;
     @FXML private Label saldoCliente;
     @FXML private ImageView cliente;
-    @FXML private ImageView clienteComendo;
+    @FXML private ImageView clienteTomando;
     @FXML private Label lblFala;
     @FXML private ImageView balaoFala;
 
-
-    private ToggleGroup grupoFrutas;
-    private ToggleGroup grupoFrutasCli;
-    private FeiraService feiraService = new FeiraService();
-    private List<String> listaBarraca = new ArrayList<>();
+    private ToggleGroup grupoRemedios;
+    private ToggleGroup grupoRemediosCli;
+    private FarmaciaService farmaciaService = new FarmaciaService();
+    private List<String> listaBalcao = new ArrayList<>();
     private final Map<String, Image> imageCache = new HashMap<>();
 
     List<double[]> slots = List.of(
@@ -103,148 +101,147 @@ public class BarracaController {
     );
 
     @FXML
-    public void initialize(){
-        getImage("Banana");
-        getImage("Maçã");
-        getImage("Laranja");
-        grupoFrutas = new ToggleGroup();
-        grupoFrutasCli = new ToggleGroup();
-        listaBarraca = feiraService.montarListaBarraca();
-        rbBanana.setToggleGroup(grupoFrutas);
-        rbMaca.setToggleGroup(grupoFrutas);
-        rbLaranja.setToggleGroup(grupoFrutas);
-        rbBananaCli.setToggleGroup(grupoFrutasCli);
-        rbMacaCli.setToggleGroup(grupoFrutasCli);
-        rbLaranjaCli.setToggleGroup(grupoFrutasCli);
-        carregarFrutas();
-        atualizarInidicadores();
-        atualizarInidicadoresCli();
+    public void initialize() {
+        getImage("Dipirona");
+        getImage("Paracetamol");
+        getImage("Amoxicilina");
+        grupoRemedios = new ToggleGroup();
+        grupoRemediosCli = new ToggleGroup();
+        listaBalcao = farmaciaService.montarListaBalcao();
+        rbDipirona.setToggleGroup(grupoRemedios);
+        rbParacetamol.setToggleGroup(grupoRemedios);
+        rbAmoxicilina.setToggleGroup(grupoRemedios);
+        rbDiroponaCli.setToggleGroup(grupoRemediosCli);
+        rbParacetamolCli.setToggleGroup(grupoRemediosCli);
+        rbAmoxicilinaCli.setToggleGroup(grupoRemediosCli);
+        carregarRemedios();
+        atualizarIndicadores();
+        atualizarIndicadoresCli();
     }
 
     @FXML
     void clicarExpor() {
-        String tipoFruta = pegarFrutaSelecionada();
-        if (tipoFruta != null) {
+        String nomeRemedio = pegarRemedioSelecionado();
+        if (nomeRemedio != null) {
             int quantidade = pegarQtd();
-            boolean sucesso = feiraService.exporProduto(tipoFruta, quantidade);
+            boolean sucesso = farmaciaService.exporProduto(nomeRemedio, quantidade);
             if (sucesso) {
                 for (int i = 0; i < quantidade; i++) {
-                    listaBarraca.add(tipoFruta);
+                    listaBalcao.add(nomeRemedio);
                 }
-                carregarFrutas();
-                atualizarInidicadores();
+                carregarRemedios();
+                atualizarIndicadores();
             } else {
                 AlertService.mostrar(anchorPane, "Operação não realizada. Verifique o estoque.", AlertService.Tipo.ERRO);
             }
         } else {
-            AlertService.mostrar(anchorPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
+            AlertService.mostrar(anchorPane, "Selecione um remédio!", AlertService.Tipo.AVISO);
         }
         limparFormulario();
     }
 
     @FXML
     void clicarOrganizar() {
-        listaBarraca = feiraService.montarListaBarraca();
-        carregarFrutas();
+        listaBalcao = farmaciaService.montarListaBalcao();
+        carregarRemedios();
     }
 
     @FXML
     void clicarRecolher() {
-        String tipoFruta = pegarFrutaSelecionada();
-        if (tipoFruta != null) {
+        String nomeRemedio = pegarRemedioSelecionado();
+        if (nomeRemedio != null) {
             int quantidade = pegarQtd();
-            boolean sucesso = feiraService.recolherProduto(tipoFruta, quantidade);
+            boolean sucesso = farmaciaService.recolherProduto(nomeRemedio, quantidade);
             if (sucesso) {
                 for (int i = 0; i < quantidade; i++) {
-                    listaBarraca.remove(tipoFruta);
+                    listaBalcao.remove(nomeRemedio);
                 }
-                carregarFrutas();
-                atualizarInidicadores();
+                carregarRemedios();
+                atualizarIndicadores();
             } else {
                 AlertService.mostrar(anchorPane, "Operação não realizada. Verifique o estoque.", AlertService.Tipo.ERRO);
             }
         } else {
-            AlertService.mostrar(anchorPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
+            AlertService.mostrar(anchorPane, "Selecione um remédio!", AlertService.Tipo.AVISO);
         }
         limparFormulario();
     }
 
     @FXML
-    void clicarComer() {
-        String tipoFruta = pegarFrutaSelecionadaCli();
-        if (tipoFruta != null) {
+    void clicarTomar() {
+        String nomeRemedio = pegarRemedioSelecionadoCli();
+        if (nomeRemedio != null) {
             int quantidade = pegarQtdCli();
-            boolean sucesso = feiraService.consumirProduto(tipoFruta, quantidade);
+            boolean sucesso = farmaciaService.consumirProduto(nomeRemedio, quantidade);
             if (sucesso) {
-                animacaoComer();
-                atualizarInidicadoresCli();
+                animacaoTomar();
+                atualizarIndicadoresCli();
             } else {
                 AlertService.mostrar(anchorPane, "Operação não realizada. Verifique o estoque.", AlertService.Tipo.ERRO);
             }
         } else {
-            AlertService.mostrar(anchorPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
+            AlertService.mostrar(anchorPane, "Selecione um remédio!", AlertService.Tipo.AVISO);
         }
         limparFormulario();
     }
 
     @FXML
     void clicarComprar() {
-        String tipoFruta = pegarFrutaSelecionadaCli();
-        if (tipoFruta != null) {
+        String nomeRemedio = pegarRemedioSelecionadoCli();
+        if (nomeRemedio != null) {
             int quantidade = pegarQtdCli();
-            boolean sucesso = feiraService.comprarProduto(tipoFruta, quantidade);
+            boolean sucesso = farmaciaService.comprarProduto(nomeRemedio, quantidade);
             if (sucesso) {
-                animacaoBalao("Olá! Eu gostaria de " + quantidade + " " + tipoFruta + "(s) por favor!");
+                animacaoBalao("Olá! Eu gostaria de " + quantidade + " " + nomeRemedio + "(s) por favor!");
                 for (int i = 0; i < quantidade; i++) {
-                    listaBarraca.remove(tipoFruta);
+                    listaBalcao.remove(nomeRemedio);
                 }
-                carregarFrutas();
-                atualizarInidicadoresCli();
+                carregarRemedios();
+                atualizarIndicadoresCli();
             } else {
                 AlertService.mostrar(anchorPane, "Operação não realizada. Verifique o estoque.", AlertService.Tipo.ERRO);
             }
         } else {
-            AlertService.mostrar(anchorPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
+            AlertService.mostrar(anchorPane, "Selecione um remédio!", AlertService.Tipo.AVISO);
         }
         limparFormulario();
     }
 
     @FXML
     void clicarDevolver() {
-        String tipoFruta = pegarFrutaSelecionadaCli();
-        if (tipoFruta != null) {
+        String nomeRemedio = pegarRemedioSelecionadoCli();
+        if (nomeRemedio != null) {
             int quantidade = pegarQtdCli();
-            boolean sucesso = feiraService.devolverProduto(tipoFruta, quantidade);
+            boolean sucesso = farmaciaService.devolverProduto(nomeRemedio, quantidade);
             if (sucesso) {
-                animacaoBalao("Eu gostaria de devolver essa(s) " + quantidade + " " + tipoFruta + "(s).");
+                animacaoBalao("Eu gostaria de devolver esse(s) " + quantidade + " " + nomeRemedio + "(s).");
                 for (int i = 0; i < quantidade; i++) {
-                    listaBarraca.add(tipoFruta);
+                    listaBalcao.add(nomeRemedio);
                 }
-                carregarFrutas();
-                atualizarInidicadoresCli();
+                carregarRemedios();
+                atualizarIndicadoresCli();
             } else {
                 AlertService.mostrar(anchorPane, "Operação não realizada. Verifique o estoque.", AlertService.Tipo.ERRO);
             }
         } else {
-            AlertService.mostrar(anchorPane, "Selecione uma fruta!", AlertService.Tipo.AVISO);
+            AlertService.mostrar(anchorPane, "Selecione um remédio!", AlertService.Tipo.AVISO);
         }
         limparFormulario();
     }
 
     @FXML
-    public void clicarVoltar(){
+    public void clicarVoltar() {
         try {
-            App.setRoot("feira");
+            App.setRoot("farmacia");
         } catch (IOException e) {
-            System.out.println("Erro ao mudar para a tela da feira: " + e);
+            System.out.println("Erro ao mudar para a tela da farmácia: " + e);
         }
     }
 
-    public String pegarFrutaSelecionada() {
-        RadioButton selecionado = (RadioButton) grupoFrutas.getSelectedToggle();
+    public String pegarRemedioSelecionado() {
+        RadioButton selecionado = (RadioButton) grupoRemedios.getSelectedToggle();
         if (selecionado != null) {
-            String fruta = selecionado.getText();
-            return fruta;
+            return selecionado.getText();
         }
         return null;
     }
@@ -252,18 +249,16 @@ public class BarracaController {
     public int pegarQtd() {
         String qtdTexto = fldQtd.getText();
         try {
-            int qtdNumero = Integer.parseInt(qtdTexto);
-            return qtdNumero;
+            return Integer.parseInt(qtdTexto);
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String pegarFrutaSelecionadaCli() {
-        RadioButton selecionado = (RadioButton) grupoFrutasCli.getSelectedToggle();
+    public String pegarRemedioSelecionadoCli() {
+        RadioButton selecionado = (RadioButton) grupoRemediosCli.getSelectedToggle();
         if (selecionado != null) {
-            String fruta = selecionado.getText();
-            return fruta;
+            return selecionado.getText();
         }
         return null;
     }
@@ -271,78 +266,77 @@ public class BarracaController {
     public int pegarQtdCli() {
         String qtdTexto = fldQtdCli.getText();
         try {
-            int qtdNumero = Integer.parseInt(qtdTexto);
-            return qtdNumero;
+            return Integer.parseInt(qtdTexto);
         } catch (NumberFormatException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Image getImage(String fruta) {
-        return imageCache.computeIfAbsent(fruta, key ->
+    public Image getImage(String remedio) {
+        return imageCache.computeIfAbsent(remedio, key ->
                 new Image(getClass().getResourceAsStream("/images/" + key + ".png"))
         );
     }
 
     private void limparFormulario() {
         fldQtd.clear();
-        rbBanana.setSelected(false);
-        rbLaranja.setSelected(false);
-        rbMaca.setSelected(false);
+        rbDipirona.setSelected(false);
+        rbParacetamol.setSelected(false);
+        rbAmoxicilina.setSelected(false);
         fldQtdCli.clear();
-        rbBananaCli.setSelected(false);
-        rbLaranjaCli.setSelected(false);
-        rbMacaCli.setSelected(false);
+        rbDiroponaCli.setSelected(false);
+        rbParacetamolCli.setSelected(false);
+        rbAmoxicilinaCli.setSelected(false);
     }
 
-    public void carregarFrutas() {
+    public void carregarRemedios() {
         anchorPane.getChildren().removeIf(n -> n instanceof ImageView && n.getUserData() != null);
-        for (int i = 0; i < listaBarraca.size() && i < slots.size(); i++) {
+        for (int i = 0; i < listaBalcao.size() && i < slots.size(); i++) {
             double[] slot = slots.get(i);
-            String fruta = listaBarraca.get(i);
+            String remedio = listaBalcao.get(i);
 
-            ImageView iv = new ImageView(getImage(fruta));
+            ImageView iv = new ImageView(getImage(remedio));
             iv.setLayoutX(slot[0]);
             iv.setLayoutY(slot[1]);
             iv.setFitWidth(slot[2]);
             iv.setFitHeight(slot[3]);
-            iv.setUserData("fruta");
+            iv.setUserData("remedio");
 
             anchorPane.getChildren().add(iv);
         }
     }
 
-    private void atualizarInidicadores() {
-        Fruta banana = feiraService.buscarPorTipo("Banana");
-        Fruta maca = feiraService.buscarPorTipo("Maçã");
-        Fruta laranja = feiraService.buscarPorTipo("Laranja");
+    private void atualizarIndicadores() {
+        Remedio dipirona = farmaciaService.buscarPorNome("Dipirona");
+        Remedio paracetamol = farmaciaService.buscarPorNome("Paracetamol");
+        Remedio amoxicilina = farmaciaService.buscarPorNome("Amoxicilina");
 
-        precoBanana.setText("R$ " + String.valueOf(banana.getValor()));
-        qtdBanana.setText(String.valueOf(banana.getQuantidade()) + "x");
-        precoMaca.setText("R$ " + String.valueOf(maca.getValor()));
-        qtdMaca.setText(String.valueOf(maca.getQuantidade()) + "x");
-        precoLaranja.setText("R$ " + String.valueOf(laranja.getValor()));
-        qtdLaranja.setText(String.valueOf(laranja.getQuantidade()) + "x");
+        precoDipirona.setText("R$ " + dipirona.getPreco());
+        qtdDipirona.setText(dipirona.getQuantidade() + "x");
+        precoParacetamol.setText("R$ " + paracetamol.getPreco());
+        qtdParacetamol.setText(paracetamol.getQuantidade() + "x");
+        precoAmoxicilina.setText("R$ " + amoxicilina.getPreco());
+        qtdAmoxicilina.setText(amoxicilina.getQuantidade() + "x");
     }
 
-    private void atualizarInidicadoresCli() {
-        Map<String, Integer> sacola = feiraService.qtdFrutasSacola();
+    private void atualizarIndicadoresCli() {
+        Map<String, Integer> cesta = farmaciaService.qtdRemediosCesta();
 
-        qtdBananaCli.setText(sacola.getOrDefault("Banana", 0) + "x");
-        qtdMacaCli.setText(sacola.getOrDefault("Maçã", 0)     + "x");
-        qtdLaranjaCli.setText(sacola.getOrDefault("Laranja", 0) + "x");
+        qtdDiroponaCli.setText(cesta.getOrDefault("Dipirona", 0) + "x");
+        qtdParacetamolCli.setText(cesta.getOrDefault("Paracetamol", 0) + "x");
+        qtdAmoxicilinaCli.setText(cesta.getOrDefault("Amoxicilina", 0) + "x");
 
-        saldoCliente.setText("R$ " + feiraService.saldoCliente());
+        saldoCliente.setText("R$ " + farmaciaService.saldoCliente());
     }
 
-    private void animacaoComer() {
+    private void animacaoTomar() {
         cliente.setVisible(false);
-        clienteComendo.setVisible(true);
+        clienteTomando.setVisible(true);
 
         PauseTransition pausa = new PauseTransition(Duration.seconds(3));
 
         pausa.setOnFinished(e -> {
-            clienteComendo.setVisible(false);
+            clienteTomando.setVisible(false);
             cliente.setVisible(true);
         });
 
@@ -351,10 +345,8 @@ public class BarracaController {
 
     private void animacaoBalao(String texto) {
         lblFala.setText(texto);
-
         balaoFala.setVisible(true);
         lblFala.setVisible(true);
-
 
         PauseTransition pausa = new PauseTransition(Duration.seconds(5));
 
@@ -365,5 +357,4 @@ public class BarracaController {
 
         pausa.play();
     }
-
 }
