@@ -23,12 +23,12 @@
             <Image url="@../../images/madeira.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="282.0" fitWidth="282.0" layoutX="604.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="282.0" fitWidth="282.0" layoutX="604.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/sacola.png" />
          </image>
       </ImageView>
-      <VBox layoutX="65.0" layoutY="63.0" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="63.0">
+      <VBox layoutX="34.0" layoutY="63.0" AnchorPane.leftAnchor="34.0" AnchorPane.topAnchor="63.0">
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
@@ -39,6 +39,11 @@
                      </image>
                   </ImageView>
                   <RadioButton id="lbl_white" fx:id="rbBanana" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
+                  <Label id="lbl_white" fx:id="precoBanana" styleClass="lbl_status" stylesheets="@../../css/style.css" text="R$ 2,00">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT">
@@ -50,6 +55,11 @@
                      </image>
                   </ImageView>
                   <RadioButton id="lbl_white" fx:id="rbLaranja" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja" />
+                  <Label id="lbl_white" fx:id="precoLaranja" styleClass="lbl_status" stylesheets="@../../css/style.css" text="R$ 2,00">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT">
@@ -64,6 +74,11 @@
                      </HBox.margin>
                   </ImageView>
                   <RadioButton id="lbl_white" fx:id="rbMaca" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
+                  <Label id="lbl_white" fx:id="precoMaca" styleClass="lbl_status" stylesheets="@../../css/style.css" text="R$ 2,00">
+                     <padding>
+                        <Insets left="5.0" />
+                     </padding>
+                  </Label>
                </children>
             </HBox>
          </children>
@@ -78,12 +93,17 @@
       </VBox>
       <TextField fx:id="fldQtd" layoutX="121.0" layoutY="219.0" maxWidth="80.0" styleClass="txt_field" stylesheets="@../../css/style.css" />
       <Label id="lbl_white" layoutX="21.0" layoutY="222.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade:" />
-      <ImageView fx:id="cliente" fitHeight="534.0" fitWidth="601.0" layoutX="388.0" layoutY="235.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-168.7674560546875" AnchorPane.rightAnchor="-22.0">
+      <ImageView fx:id="cliente" fitHeight="534.0" fitWidth="601.0" layoutX="492.0" layoutY="239.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-172.7674560546875" AnchorPane.leftAnchor="492.0" AnchorPane.rightAnchor="-126.0" AnchorPane.topAnchor="239.0">
          <image>
             <Image url="@../../images/cliente.png" />
          </image>
       </ImageView>
-      <VBox layoutX="689.0" layoutY="255.0" spacing="10.0">
+      <ImageView fx:id="clienteComendo" fitHeight="534.0" fitWidth="601.0" layoutX="492.0" layoutY="238.0" nodeOrientation="RIGHT_TO_LEFT" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.bottomAnchor="-171.7674560546875" AnchorPane.leftAnchor="492.0" AnchorPane.rightAnchor="-126.0" AnchorPane.topAnchor="238.0">
+         <image>
+            <Image url="@../../images/cliente_comendo.png" />
+         </image>
+      </ImageView>
+      <VBox alignment="TOP_RIGHT" layoutX="786.0" layoutY="261.0" spacing="10.0">
          <children>
             <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarComer" styleClass="btn" stylesheets="@../../css/style.css" text="Comer" />
             <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarComprar" styleClass="btn" stylesheets="@../../css/style.css" text="Comprar" />
@@ -92,33 +112,33 @@
       </VBox>
       <TextField fx:id="fldQtdCli" layoutX="786.0" layoutY="223.0" maxWidth="80.0" styleClass="txt_field" stylesheets="@../../css/style.css" />
       <Label id="lbl_white" layoutX="686.0" layoutY="226.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade:" />
-      <VBox layoutX="695.0" layoutY="63.0">
+      <VBox layoutX="679.0" layoutY="49.0">
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="lbl_white" fx:id="qtdBananaCli" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
+                  <Label id="lbl_black" fx:id="qtdBananaCli" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
                   <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/banana.png" />
                      </image>
                   </ImageView>
-                  <RadioButton id="lbl_white" fx:id="rbBananaCli" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
+                  <RadioButton id="lbl_black" fx:id="rbBananaCli" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="lbl_white" fx:id="qtdLaranjaCli" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
+                  <Label id="lbl_black" fx:id="qtdLaranjaCli" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
                   <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/laranja.png" />
                      </image>
                   </ImageView>
-                  <RadioButton id="lbl_white" fx:id="rbLaranjaCli" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja" />
+                  <RadioButton id="lbl_black" fx:id="rbLaranjaCli" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="lbl_white" fx:id="qtdMacaCli" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
+                  <Label id="lbl_black" fx:id="qtdMacaCli" styleClass="lbl_status" stylesheets="@../../css/style.css" text="0x" />
                   <ImageView fitHeight="150.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../images/maçã.png" />
@@ -127,10 +147,16 @@
                         <Insets left="10.0" right="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <RadioButton id="lbl_white" fx:id="rbMacaCli" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
+                  <RadioButton id="lbl_black" fx:id="rbMacaCli" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
                </children>
             </HBox>
          </children>
       </VBox>
+      <Label id="lbl_white" layoutX="687.0" layoutY="198.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Saldo:" />
+      <Label id="lbl_white" fx:id="saldoCliente" layoutX="734.0" layoutY="198.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="R$ 2,00">
+         <padding>
+            <Insets left="5.0" />
+         </padding>
+      </Label>
    </children>
 </AnchorPane>

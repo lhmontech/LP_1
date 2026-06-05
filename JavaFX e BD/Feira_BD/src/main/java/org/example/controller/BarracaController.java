@@ -1,11 +1,13 @@
 package org.example.controller;
 
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import org.example.App;
 
 import javafx.scene.image.ImageView;
@@ -15,7 +17,9 @@ import org.example.service.FeiraService;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class BarracaController {
     @FXML private TextField fldQtd;
@@ -24,6 +28,9 @@ public class BarracaController {
     @FXML private RadioButton rbMaca;
     @FXML private AnchorPane anchorPane;
     @FXML private TextField fldQtdCli;
+    @FXML private Label precoBanana;
+    @FXML private Label precoMaca;
+    @FXML private Label precoLaranja;
     @FXML private Label qtdBanana;
     @FXML private Label qtdBananaCli;
     @FXML private Label qtdLaranja;
@@ -33,11 +40,16 @@ public class BarracaController {
     @FXML private RadioButton rbBananaCli;
     @FXML private RadioButton rbLaranjaCli;
     @FXML private RadioButton rbMacaCli;
+    @FXML private Label saldoCliente;
+    @FXML private ImageView cliente;
+    @FXML private ImageView clienteComendo;
 
 
     private ToggleGroup grupoFrutas;
+    private ToggleGroup grupoFrutasCli;
     private FeiraService feiraService = new FeiraService();
     private List<String> listaBarraca = new ArrayList<>();
+    private final Map<String, Image> imageCache = new HashMap<>();
 
     List<double[]> slots = List.of(
             new double[]{152, 348, 48, 48},
@@ -96,12 +108,21 @@ public class BarracaController {
 
     @FXML
     public void initialize(){
+        getImage("Banana");
+        getImage("Maçã");
+        getImage("Laranja");
         grupoFrutas = new ToggleGroup();
+        grupoFrutasCli = new ToggleGroup();
         listaBarraca = feiraService.montarListaBarraca();
         rbBanana.setToggleGroup(grupoFrutas);
         rbMaca.setToggleGroup(grupoFrutas);
         rbLaranja.setToggleGroup(grupoFrutas);
+        rbBananaCli.setToggleGroup(grupoFrutasCli);
+        rbMacaCli.setToggleGroup(grupoFrutasCli);
+        rbLaranjaCli.setToggleGroup(grupoFrutasCli);
         carregarFrutas();
+        atualizarInidicadores();
+        atualizarInidicadoresCli();
     }
 
     @FXML
@@ -109,15 +130,18 @@ public class BarracaController {
         String tipoFruta = pegarFrutaSelecionada();
         if (tipoFruta != null) {
             int quantidade = pegarQtd();
-            feiraService.exporProduto(tipoFruta, quantidade);
-            for (int i = 0; i < quantidade; i++){
-                listaBarraca.add(tipoFruta);
+            boolean sucesso = feiraService.exporProduto(tipoFruta, quantidade);
+            if (sucesso) {
+                for (int i = 0; i < quantidade; i++) {
+                    listaBarraca.add(tipoFruta);
+                }
+                carregarFrutas();
+                atualizarInidicadores();
             }
-            carregarFrutas();
-            limparFormulario();
         } else {
-            System.out.println("Necessário selecionar alguma fruta");
+            System.out.println("Necessário selecionar alguma fruta!");
         }
+        limparFormulario();
     }
 
     @FXML
@@ -131,15 +155,72 @@ public class BarracaController {
         String tipoFruta = pegarFrutaSelecionada();
         if (tipoFruta != null) {
             int quantidade = pegarQtd();
-            feiraService.recolherProduto(tipoFruta, quantidade);
-            for (int i = 0; i < quantidade; i++){
-                listaBarraca.remove(tipoFruta);
+            boolean sucesso = feiraService.recolherProduto(tipoFruta, quantidade);
+            if (sucesso) {
+                for (int i = 0; i < quantidade; i++) {
+                    listaBarraca.remove(tipoFruta);
+                }
+                carregarFrutas();
+                atualizarInidicadores();
             }
-            carregarFrutas();
-            limparFormulario();
         } else {
             System.out.println("Necessário selecionar alguma fruta");
         }
+        limparFormulario();
+    }
+
+    @FXML
+    void clicarComer() {
+        String tipoFruta = pegarFrutaSelecionadaCli();
+        if (tipoFruta != null) {
+            int quantidade = pegarQtdCli();
+            boolean sucesso = feiraService.consumirProduto(tipoFruta, quantidade);
+            if (sucesso) {
+                animacaoComer();
+                atualizarInidicadoresCli();
+            }
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
+        limparFormulario();
+    }
+
+    @FXML
+    void clicarComprar() {
+        String tipoFruta = pegarFrutaSelecionadaCli();
+        if (tipoFruta != null) {
+            int quantidade = pegarQtdCli();
+            boolean sucesso = feiraService.comprarProduto(tipoFruta, quantidade);
+            if (sucesso) {
+                for (int i = 0; i < quantidade; i++) {
+                    listaBarraca.remove(tipoFruta);
+                }
+                carregarFrutas();
+                atualizarInidicadoresCli();
+            }
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
+        limparFormulario();
+    }
+
+    @FXML
+    void clicarDevolver() {
+        String tipoFruta = pegarFrutaSelecionadaCli();
+        if (tipoFruta != null) {
+            int quantidade = pegarQtdCli();
+            boolean sucesso = feiraService.devolverProduto(tipoFruta, quantidade);
+            if (sucesso) {
+                for (int i = 0; i < quantidade; i++) {
+                    listaBarraca.add(tipoFruta);
+                }
+                carregarFrutas();
+                atualizarInidicadoresCli();
+            }
+        } else {
+            System.out.println("Necessário selecionar alguma fruta");
+        }
+        limparFormulario();
     }
 
     @FXML
@@ -170,8 +251,29 @@ public class BarracaController {
         }
     }
 
+    public String pegarFrutaSelecionadaCli() {
+        RadioButton selecionado = (RadioButton) grupoFrutasCli.getSelectedToggle();
+        if (selecionado != null) {
+            String fruta = selecionado.getText();
+            return fruta;
+        }
+        return null;
+    }
+
+    public int pegarQtdCli() {
+        String qtdTexto = fldQtdCli.getText();
+        try {
+            int qtdNumero = Integer.parseInt(qtdTexto);
+            return qtdNumero;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public Image getImage(String fruta) {
-        return new Image(getClass().getResourceAsStream("/images/" + fruta + ".png"));
+        return imageCache.computeIfAbsent(fruta, key ->
+                new Image(getClass().getResourceAsStream("/images/" + key + ".png"))
+        );
     }
 
     private void limparFormulario() {
@@ -179,6 +281,10 @@ public class BarracaController {
         rbBanana.setSelected(false);
         rbLaranja.setSelected(false);
         rbMaca.setSelected(false);
+        fldQtdCli.clear();
+        rbBananaCli.setSelected(false);
+        rbLaranjaCli.setSelected(false);
+        rbMacaCli.setSelected(false);
     }
 
     public void carregarFrutas() {
@@ -199,13 +305,40 @@ public class BarracaController {
     }
 
     private void atualizarInidicadores() {
-        Fruta banana = feiraService.buscarPorTipoBarraca("Banana");
-        Fruta maca = feiraService.buscarPorTipoBarraca("Maçã");
-        Fruta laranja = feiraService.buscarPorTipoBarraca("Laranja");
+        Fruta banana = feiraService.buscarPorTipo("Banana");
+        Fruta maca = feiraService.buscarPorTipo("Maçã");
+        Fruta laranja = feiraService.buscarPorTipo("Laranja");
 
-        qtdBanana.setText(String.valueOf(banana.getQuantidade()));
-        qtdMaca.setText(String.valueOf(maca.getQuantidade()));
-        qtdLaranja.setText(String.valueOf(laranja.getQuantidade()));
+        precoBanana.setText("R$ " + String.valueOf(banana.getValor()));
+        qtdBanana.setText(String.valueOf(banana.getQuantidade()) + "x");
+        precoMaca.setText("R$ " + String.valueOf(maca.getValor()));
+        qtdMaca.setText(String.valueOf(maca.getQuantidade()) + "x");
+        precoLaranja.setText("R$ " + String.valueOf(laranja.getValor()));
+        qtdLaranja.setText(String.valueOf(laranja.getQuantidade()) + "x");
+    }
+
+    private void atualizarInidicadoresCli() {
+        Map<String, Integer> sacola = feiraService.qtdFrutasSacola();
+
+        qtdBananaCli.setText(sacola.getOrDefault("Banana", 0) + "x");
+        qtdMacaCli.setText(sacola.getOrDefault("Maçã", 0)     + "x");
+        qtdLaranjaCli.setText(sacola.getOrDefault("Laranja", 0) + "x");
+
+        saldoCliente.setText("R$ " + feiraService.saldoCliente());
+    }
+
+    private void animacaoComer() {
+        cliente.setVisible(false);
+        clienteComendo.setVisible(true);
+
+        PauseTransition pausa = new PauseTransition(Duration.seconds(3));
+
+        pausa.setOnFinished(e -> {
+            clienteComendo.setVisible(false);
+            cliente.setVisible(true);
+        });
+
+        pausa.play();
     }
 
 }

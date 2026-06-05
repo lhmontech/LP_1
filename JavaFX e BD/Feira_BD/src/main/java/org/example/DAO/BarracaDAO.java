@@ -38,7 +38,7 @@ public class BarracaDAO {
     }
 
     public List<Fruta> buscarFrutas(){
-        String sql = "SELECT b.fruta_id, b.quantidade, f.tipo FROM barraca b JOIN fruta f ON f.id = b.fruta_id ORDER BY fruta_id";
+        String sql = "SELECT b.fruta_id, b.quantidade, f.tipo, f.preco FROM barraca b JOIN fruta f ON f.id = b.fruta_id ORDER BY b.fruta_id";
 
         try (Connection conn = ConexaoBD.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -49,6 +49,7 @@ public class BarracaDAO {
                 frutas.add( new Fruta(
                         rs.getLong("fruta_id"),
                         rs.getString("tipo"),
+                        rs.getDouble("preco"),
                         rs.getInt("quantidade")
                 ));
             }
@@ -60,7 +61,7 @@ public class BarracaDAO {
     }
 
     public Fruta verificarFruta(Long FrutaId){
-        String sql = "SELECT b.fruta_id, b.quantidade, f.tipo FROM barraca b JOIN fruta f ON f.id = b.fruta_id WHERE fruta_id = ?";
+        String sql = "SELECT b.fruta_id, b.quantidade, f.tipo, f.preco FROM barraca b JOIN fruta f ON f.id = b.fruta_id WHERE b.fruta_id = ?";
 
         try (Connection conn = ConexaoBD.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -71,6 +72,7 @@ public class BarracaDAO {
                 return new Fruta(
                         rs.getLong("fruta_id"),
                         rs.getString("tipo"),
+                        rs.getDouble("preco"),
                         rs.getInt("quantidade"));
             }
             return null;

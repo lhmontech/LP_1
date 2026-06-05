@@ -15,6 +15,11 @@ public class Cliente {
         this.sacola = sacola;
     }
 
+    public Cliente(Long id, double saldo) {
+        this.id = id;
+        this.saldo = saldo;
+    }
+
     public Long getId() {
         return id;
     }
@@ -47,15 +52,4 @@ public class Cliente {
         this.sacola = sacola;
     }
 
-    public void comprarProduto(){
-
-    }
-
-    public void consumirProduto(){
-
-    }
-
-    public void devolverProduto(){
-
-    }
 }
