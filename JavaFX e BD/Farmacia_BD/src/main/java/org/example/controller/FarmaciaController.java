@@ -13,6 +13,7 @@ public class FarmaciaController {
             App.setRoot("balcao");
         } catch (IOException e) {
             System.out.println("Erro ao mudar para a tela do balcão: " + e);
+            e.printStackTrace();
         }
     }
 
@@ -22,6 +23,7 @@ public class FarmaciaController {
             App.setRoot("balcao");
         } catch (IOException e) {
             System.out.println("Erro ao mudar para a tela do cliente: " + e);
+            e.printStackTrace();
         }
     }
 

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.CabeleireiroController">
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
+    <tabs>
+        <Tab id="tabClientes" fx:id="tabClientes" text="Clientes">
+            <content>
+                <AnchorPane id="pane-clientes" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane-tab">
+                    <children>
+                        <Label alignment="CENTER" layoutY="14.0" styleClass="label,section-title" text="Cadastro de cliente" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" layoutY="53.0" spacing="10.0" styleClass="form-container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Nome:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="txtNomeCli" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Telefone:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="txtTelefone" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Genero:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <ComboBox fx:id="cbGenero" />
+                                    </children>
+                                </HBox>
+                                <Button mnemonicParsing="false" onAction="#clicarCadastrarCli" styleClass="button,btn-primary" text="Cadastrar" />
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="30.0" right="15.0" top="15.0" />
+                            </padding>
+                        </VBox>
+                        <Label alignment="CENTER" layoutX="14.0" layoutY="253.0" styleClass="label,list-title" text="Clientes" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="27.0" layoutY="312.0" spacing="5.0" styleClass="search-bar">
+                            <children>
+                                <Label styleClass="label,form-label" text="Buscar cliente:">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="txtBuscaNome" promptText="Nome" />
+                                <Button mnemonicParsing="false" onAction="#clicarBuscarCli" styleClass="button,btn-secondary" text="Buscar" />
+                            </children>
+                        </HBox>
+                        <TableView fx:id="clientesTable" layoutX="27.0" layoutY="354.0" prefHeight="200.0" prefWidth="549.0" styleClass="table-view,data-table">
+                            <columns>
+                                <TableColumn fx:id="clCheckCli" prefWidth="31.0" />
+                                <TableColumn fx:id="clNome" prefWidth="270.0" text="Nome" />
+                                <TableColumn fx:id="clGenero" minWidth="0.0" prefWidth="66.0" text="Genero" />
+                                <TableColumn fx:id="clTelefone" prefWidth="181.0" text="Telefone" />
+                            </columns>
+                        </TableView>
+                        <Button layoutX="458.0" layoutY="563.0" mnemonicParsing="false" onAction="#clicarEditarCli" styleClass="button,btn-edit" text="Editar" />
+                        <Button layoutX="526.0" layoutY="563.0" mnemonicParsing="false" onAction="#clicarExcluirCli" styleClass="button,btn-danger" text="Excluir" />
+                    </children></AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="tabServicos" fx:id="tabServicos" text="Serviços">
+            <content>
+                <AnchorPane id="pane-servicos" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane-tab">
+                    <children>
+                        <Label alignment="CENTER" layoutY="14.0" styleClass="label,section-title" text="Cadastro de serviço" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" layoutY="53.0" prefHeight="181.0" prefWidth="600.0" spacing="10.0" styleClass="form-container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Tipo:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="txtTipo" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Preço:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="txtPreco" prefHeight="25.0" prefWidth="108.0" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Duração:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <Spinner fx:id="spDuracao" prefHeight="25.0" prefWidth="89.0" />
+                                    </children>
+                                </HBox>
+                                <Button mnemonicParsing="false" onAction="#clicarCadastrarSer" styleClass="button,btn-primary" text="Cadastrar" />
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="30.0" right="15.0" top="15.0" />
+                            </padding>
+                        </VBox>
+                        <Label alignment="CENTER" layoutY="241.0" styleClass="label,list-title" text="Serviços" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="27.0" layoutY="267.0" spacing="5.0" styleClass="search-bar">
+                            <children>
+                                <Label styleClass="label,form-label" text="Buscar cliente:">
+                                    <font>
+                                        <Font size="16.0" />
+                                    </font>
+                                </Label>
+                                <TextField fx:id="txtBuscaServico" promptText="Nome" />
+                                <Button mnemonicParsing="false" onAction="#clicarBuscarSer" styleClass="button,btn-secondary" text="Buscar" />
+                            </children>
+                        </HBox>
+                        <TableView fx:id="servicosTable" layoutX="27.0" layoutY="308.0" prefHeight="246.0" prefWidth="549.0" styleClass="table-view,data-table">
+                            <columns>
+                                <TableColumn fx:id="clCheckSer" prefWidth="31.0" />
+                                <TableColumn fx:id="clTipo" prefWidth="270.0" text="Tipo" />
+                                <TableColumn fx:id="clPreco" minWidth="0.0" prefWidth="120.0" text="Preço" />
+                                <TableColumn fx:id="clDuracao" prefWidth="127.0" text="Duração" />
+                            </columns>
+                        </TableView>
+                        <Button layoutX="458.0" layoutY="563.0" mnemonicParsing="false" onAction="#clicarEditarSer" styleClass="button,btn-edit" text="Editar" />
+                        <Button layoutX="526.0" layoutY="563.0" mnemonicParsing="false" onAction="#clicarExcluirSer" styleClass="button,btn-danger" text="Excluir" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab id="tabAgenda" fx:id="tabAgenda" text="Agenda">
+            <content>
+                <AnchorPane id="pane-agenda" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="pane-tab">
+                    <children>
+                        <Label alignment="CENTER" layoutY="14.0" styleClass="label,section-title" text="Agendar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <VBox alignment="CENTER_LEFT" layoutY="47.0" spacing="10.0" styleClass="form-container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Cliente:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                              <ComboBox fx:id="cbClienteAg" prefWidth="150.0" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Serviço:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                              <ComboBox fx:id="cbServicoAg" prefWidth="150.0" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Data:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="164.0" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
+                                    <children>
+                                        <Label styleClass="label,form-label" text="Horário:">
+                                            <font>
+                                                <Font size="16.0" />
+                                            </font>
+                                        </Label>
+                                        <TextField fx:id="txtHorario" prefHeight="25.0" prefWidth="146.0" />
+                                    </children>
+                                </HBox>
+                                <Button mnemonicParsing="false" onAction="#clicarAgendar" styleClass="button,btn-primary" text="Agendar" />
+                            </children>
+                            <padding>
+                                <Insets bottom="15.0" left="30.0" right="15.0" top="15.0" />
+                            </padding>
+                        </VBox>
+                        <Label alignment="CENTER" layoutY="281.0" styleClass="label,list-title" text="Conferir agenda" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                            <font>
+                                <Font name="System Bold" size="24.0" />
+                            </font>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" layoutX="27.0" layoutY="272.0" spacing="5.0" />
+                  <HBox alignment="CENTER_LEFT" layoutX="27.0" layoutY="314.0" spacing="5.0" styleClass="search-bar">
+                     <children>
+                              <Label styleClass="label,form-label" text="Filtrar dia:">
+                                  <font>
+                                      <Font size="16.0" />
+                                  </font>
+                              </Label>
+                              <DatePicker fx:id="dateBusca" />
+                              <Button mnemonicParsing="false" onAction="#clicarFiltrar" styleClass="button,btn-secondary" text="Buscar" />
+                     </children>
+                  </HBox>
+                        <TableView fx:id="agendaTable" layoutX="27.0" layoutY="355.0" prefHeight="199.0" prefWidth="549.0" styleClass="table-view,data-table">
+                            <columns>
+                                <TableColumn fx:id="clCheckAg" prefWidth="31.0" />
+                                <TableColumn fx:id="clData" prefWidth="121.0" text="Data" />
+                                <TableColumn fx:id="clHorario" minWidth="0.0" text="Horário" />
+                                <TableColumn fx:id="clCliente" prefWidth="184.0" text="Cliente" />
+                                <TableColumn fx:id="clServicoAg" prefWidth="132.0" text="Serviço" />
+                            </columns>
+                        </TableView>
+                        <Button layoutX="458.0" layoutY="563.0" mnemonicParsing="false" onAction="#clicarEditarAg" styleClass="button,btn-edit" text="Editar" />
+                        <Button layoutX="526.0" layoutY="563.0" mnemonicParsing="false" onAction="#clicarExcluirAg" styleClass="button,btn-danger" text="Excluir" />
+                    </children>
+                </AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
+</TabPane>

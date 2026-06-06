@@ -42,7 +42,7 @@ public class BalcaoController {
     @FXML private RadioButton rbAmoxicilinaCli;
     @FXML private Label saldoCliente;
     @FXML private ImageView cliente;
-    @FXML private ImageView clienteTomando;
+    //@FXML private ImageView clienteTomando;
     @FXML private Label lblFala;
     @FXML private ImageView balaoFala;
 
@@ -331,12 +331,12 @@ public class BalcaoController {
 
     private void animacaoTomar() {
         cliente.setVisible(false);
-        clienteTomando.setVisible(true);
+        //clienteTomando.setVisible(true);
 
         PauseTransition pausa = new PauseTransition(Duration.seconds(3));
 
         pausa.setOnFinished(e -> {
-            clienteTomando.setVisible(false);
+            //clienteTomando.setVisible(false);
             cliente.setVisible(true);
         });
 

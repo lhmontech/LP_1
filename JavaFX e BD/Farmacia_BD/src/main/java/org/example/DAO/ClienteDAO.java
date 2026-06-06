@@ -39,7 +39,7 @@ public class ClienteDAO {
     }
 
     public void alterarSaldo(Long clienteId, double novoValor) {
-        String sql = "UPDATE cliente SET saldo = ? WHERE id = ?";
+        String sql = "UPDATE cliente_farma SET saldo = ? WHERE id = ?";
 
         try (Connection conn = ConexaoBD.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -75,7 +75,7 @@ public class ClienteDAO {
     }
 
     public Cliente buscarCliente() {
-        String sql = "SELECT id, saldo FROM cliente ORDER BY id LIMIT 1";
+        String sql = "SELECT id, saldo FROM cliente_farma ORDER BY id LIMIT 1";
 
         try (Connection conn = ConexaoBD.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

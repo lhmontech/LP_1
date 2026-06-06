@@ -12,13 +12,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FrutaController">
+<AnchorPane fx:id="rootPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.RemedioController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="900.0" opacity="0.15" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../images/fundo_cadastro.jpg" />
-         </image>
-      </ImageView>
       <HBox alignment="CENTER" layoutY="150.0" spacing="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
          <children>
             <VBox alignment="BOTTOM_CENTER">
@@ -26,21 +21,21 @@
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade atual:" />
-                        <Label fx:id="lblQtdB" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
+                        <Label fx:id="lblQtdA" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Preço atual:" />
-                        <Label fx:id="lblPrecoB" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
+                        <Label fx:id="lblPrecoA" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
                      </children>
                   </HBox>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/banana.png" />
+                        <Image url="@../../images/amoxicilina.png" />
                      </image>
                   </ImageView>
-                  <RadioButton fx:id="rsBanana" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Banana" />
+                  <RadioButton fx:id="rsAmoxicilina" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Amoxicilina" />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER">
@@ -48,24 +43,24 @@
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade atual:" />
-                        <Label fx:id="lblQtdM" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
+                        <Label fx:id="lblQtdD" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Preço atual:" />
-                        <Label fx:id="lblPrecoM" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
+                        <Label fx:id="lblPrecoD" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
                      </children>
                   </HBox>
-                  <ImageView fitHeight="110.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/maçã.png" />
+                        <Image url="@../../images/amoxicilina.png" />
                      </image>
                      <VBox.margin>
-                        <Insets bottom="20.0" top="20.0" />
+                        <Insets />
                      </VBox.margin>
                   </ImageView>
-                  <RadioButton fx:id="rsMaca" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Maçã" />
+                  <RadioButton fx:id="rsDipirona" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Dipirona" />
                </children>
             </VBox>
             <VBox alignment="BOTTOM_CENTER">
@@ -73,21 +68,21 @@
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade atual:" />
-                        <Label fx:id="lblQtdL" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
+                        <Label fx:id="lblQtdP" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="0" />
                      </children>
                   </HBox>
                   <HBox spacing="15.0">
                      <children>
                         <Label styleClass="lbl_status" stylesheets="@../../css/style.css" text="Preço atual:" />
-                        <Label fx:id="lblPrecoL" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
+                        <Label fx:id="lblPrecoP" styleClass="lbl_valores" stylesheets="@../../css/style.css" text="R$ 0,00" />
                      </children>
                   </HBox>
                   <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/laranja.png" />
+                        <Image url="@../../images/amoxicilina.png" />
                      </image>
                   </ImageView>
-                  <RadioButton fx:id="rsLaranja" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Laranja">
+                  <RadioButton fx:id="rsParacetamol" mnemonicParsing="false" styleClass="radio_btn" stylesheets="@../../css/style.css" text="Paracetamol">
                      <font>
                         <Font size="14.0" />
                      </font>

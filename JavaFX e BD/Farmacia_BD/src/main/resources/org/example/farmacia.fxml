@@ -5,15 +5,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FeiraController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.FarmaciaController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="900.0" layoutX="112.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../../images/feira.jpg" />
+            <Image url="@../../images/farmacia.png" />
          </image>
       </ImageView>
-      <Button id="btn_inicial" fx:id="btnBarraca" layoutX="87.0" layoutY="333.0" mnemonicParsing="false" onAction="#clicarBarraca" prefHeight="48.0" prefWidth="77.0" styleClass="btn" stylesheets="@../../css/style.css" text="Barraca" />
-      <Button id="btn_inicial" fx:id="btnFrutas" layoutX="318.0" layoutY="183.0" mnemonicParsing="false" onAction="#clicarFrutas" prefHeight="48.0" prefWidth="77.0" styleClass="btn" stylesheets="@../../css/style.css" text="Frutas" />
+      <Button id="btn_inicial" fx:id="btnBalcao" layoutX="320.0" layoutY="273.0" mnemonicParsing="false" onAction="#clicarBalcao" prefHeight="48.0" prefWidth="77.0" styleClass="btn" stylesheets="@../../css/style.css" text="Balcão" />
+      <Button id="btn_inicial" fx:id="btnRemedios" layoutX="171.0" layoutY="111.0" mnemonicParsing="false" onAction="#clicarRemedios" prefHeight="48.0" prefWidth="87.0" styleClass="btn" stylesheets="@../../css/style.css" text="Remédios" />
       <Button id="btn_inicial" fx:id="btnCliente" layoutX="728.0" layoutY="207.0" mnemonicParsing="false" onAction="#clicarCliente" prefHeight="48.0" prefWidth="77.0" styleClass="btn" stylesheets="@../../css/style.css" text="Cliente" />
    </children>
 </AnchorPane>
