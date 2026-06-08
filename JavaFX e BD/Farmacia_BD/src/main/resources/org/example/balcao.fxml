@@ -12,21 +12,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BalcaoController">
+<AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.BalcaoController">
    <children>
       <ImageView fitHeight="600.0" fitWidth="1085.0" layoutX="-169.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../../images/balcao.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="420.0" fitWidth="502.0" layoutX="-91.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-47.44000244140625">
+      <ImageView fitHeight="69.0" fitWidth="126.0" layoutX="217.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/carrinho.jpg" />
+            <Image url="@../../images/remedios.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cliente" fitHeight="524.0" fitWidth="524.0" layoutX="129.0" layoutY="212.55999755859375" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-48.0">
+      <ImageView fitHeight="69.0" fitWidth="126.0" layoutX="117.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/remedios.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="35.0" layoutX="224.0" layoutY="130.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/Amoxicilina.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="420.0" fitWidth="502.0" layoutX="-59.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-47.0">
+         <image>
+            <Image url="@../../images/carrinho.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="cliente" fitHeight="524.0" fitWidth="524.0" layoutX="99.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-50.0">
          <image>
             <Image url="@../../images/cliente.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="126.0" layoutX="117.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/remedios.png" />
          </image>
       </ImageView>
       <VBox layoutX="550.0" layoutY="410.0">
@@ -89,9 +109,9 @@
             <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarOrganizar" styleClass="btn" stylesheets="@../../css/style.css" text="Organizar" />
          </children>
       </VBox>
-      <TextField fx:id="fldQtdCli" layoutX="119.0" layoutY="278.0" maxWidth="80.0" styleClass="txt_field" stylesheets="@../../css/style.css" />
-      <Label id="lbl_white" layoutX="19.0" layoutY="281.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade:" />
-      <VBox alignment="CENTER_LEFT" layoutX="244.0" layoutY="315.0" spacing="10.0">
+      <TextField fx:id="fldQtdCli" layoutX="161.0" layoutY="315.0" maxWidth="80.0" styleClass="txt_field" stylesheets="@../../css/style.css" />
+      <Label id="lbl_white" layoutX="61.0" layoutY="318.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade:" />
+      <VBox alignment="CENTER_LEFT" layoutX="59.0" layoutY="166.0" spacing="10.0">
          <children>
             <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarTomar" styleClass="btn" stylesheets="@../../css/style.css" text="Tomar" />
             <Button id="btn_inicial" mnemonicParsing="false" onAction="#clicarComprar" styleClass="btn" stylesheets="@../../css/style.css" text="Comprar" />
@@ -100,7 +120,7 @@
       </VBox>
       <TextField fx:id="fldQtd" layoutX="808.0" layoutY="390.0" maxWidth="80.0" styleClass="txt_field" stylesheets="@../../css/style.css" />
       <Label id="lbl_white" layoutX="708.0" layoutY="393.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Quantidade:" />
-      <VBox layoutX="97.0" layoutY="329.0">
+      <VBox layoutX="90.0" layoutY="347.0">
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
@@ -140,8 +160,8 @@
             </HBox>
          </children>
       </VBox>
-      <Label id="lbl_white" layoutX="19.0" layoutY="253.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Saldo:" />
-      <Label id="lbl_white" fx:id="saldoCliente" layoutX="66.0" layoutY="253.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="R$ 2,00">
+      <Label id="lbl_white" layoutX="61.0" layoutY="293.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="Saldo:" />
+      <Label id="lbl_white" fx:id="saldoCliente" layoutX="108.0" layoutY="293.0" styleClass="lbl_status" stylesheets="@../../css/style.css" text="R$ 2,00">
          <padding>
             <Insets left="5.0" />
          </padding>
