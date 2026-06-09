@@ -60,7 +60,7 @@
                                                 <Font size="16.0" />
                                             </font>
                                         </Label>
-                                        <ComboBox fx:id="cbGenero" />
+                                        <ComboBox fx:id="cbGenero" prefHeight="27.0" prefWidth="59.0" />
                                     </children>
                                 </HBox>
                                 <Button mnemonicParsing="false" onAction="#clicarCadastrarCli" styleClass="button,btn-primary" text="Cadastrar" />
@@ -184,7 +184,7 @@
                                 <Font name="System Bold" size="24.0" />
                             </font>
                         </Label>
-                        <VBox alignment="CENTER_LEFT" layoutY="47.0" spacing="10.0" styleClass="form-container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <VBox alignment="CENTER_LEFT" layoutY="53.0" spacing="10.0" styleClass="form-container" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                             <children>
                                 <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
                                     <children>
@@ -213,7 +213,7 @@
                                                 <Font size="16.0" />
                                             </font>
                                         </Label>
-                                        <DatePicker fx:id="datePicker" prefHeight="25.0" prefWidth="164.0" />
+                                        <DatePicker fx:id="datePicker" prefHeight="31.0" prefWidth="148.0" />
                                     </children>
                                 </HBox>
                                 <HBox alignment="CENTER_LEFT" spacing="5.0" styleClass="form-row">
@@ -223,7 +223,7 @@
                                                 <Font size="16.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="txtHorario" prefHeight="25.0" prefWidth="146.0" />
+                              <TextField fx:id="txtHorario" prefWidth="149.0" />
                                     </children>
                                 </HBox>
                                 <Button mnemonicParsing="false" onAction="#clicarAgendar" styleClass="button,btn-primary" text="Agendar" />
